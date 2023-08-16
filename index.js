@@ -412,46 +412,19 @@ module.exports = alpha = async (alpha, bot) => {
                 if (!text) return reply(`Kirim perintah:\n${prefix+command} judul lagu\n\nContoh penggunaan:\n\`${prefix+command} bot WhatsApp Zeeoneofc\``)
                 //if (isUrl(text)) return reply(`Kirim perintah:\n${prefix+command} judul lagu\n\nContoh penggunaan:\n${prefix+command} bot WhatsApp Zeeoneofc`)
                 reply(lang.wait)
-                let res = await fetch(global.api('alfa', '/api/downloader/youtube-search', {
-                    query: text
-                }, 'apikey'))
-                if (!res.ok) throw await res.text()
-                var result = await res.json()
-                var {
-                    videoId,
-                    image,
-                    title,
-                    views,
-                    duration,
-                    author,
-                    ago,
-                    url,
-                    description
-                } = result.result.videos[0]
+                let res = await fetch(`https://vihangayt.me/download/youtube_mp3?url=${text)`)
+
                 let thumbInfo = `*「 YOUTUBE PLAY 」*
 
-🆔 ID : ${videoId}
-💬 Title : ${title}
-📺 Views : ${views}
-⏰ Duration : ${duration.timestamp}
-▶️ Channel : ${author.name}
-📆 Upload : ${ago}
-🔗 URL Video : ${url}
-📝 Description : ${description}
-
-Kirim berikut perintah untuk mendownload media
-${prefix}ytmp3 ${url}
-${prefix}ytmp4 ${url}`
+🆔 Title : ${res.data.title}`
                 alpha.replyWithPhoto({
-                    url: image
-                }, {
                     caption: thumbInfo,
                     parse_mode: 'MARKDOWN',
                     reply_markup: {
                         inline_keyboard: [
                             [{
                                     text: '🎻 Audio',
-                                    callback_data: 'ytmp3 ' + user_id + url
+                                    callback_data: 'res.data.mp3' + user_id + url
                                 },
                                 {
                                     text: 'Video 🎦',
