@@ -412,7 +412,7 @@ module.exports = alpha = async (alpha, bot) => {
                 if (!text) return reply(`Kirim perintah:\n${prefix+command} judul lagu\n\nContoh penggunaan:\n\`${prefix+command} bot WhatsApp Zeeoneofc\``)
                 //if (isUrl(text)) return reply(`Kirim perintah:\n${prefix+command} judul lagu\n\nContoh penggunaan:\n${prefix+command} bot WhatsApp Zeeoneofc`)
                 reply(lang.wait)
-                let res = await fetch(`https://vihangayt.me/download/youtube_mp3?url=${text)`)
+                let res = await fetch(`https://vihangayt.me/download/youtube_mp3?url=${text}`)
 
                 let thumbInfo = `*「 YOUTUBE PLAY 」*
 
